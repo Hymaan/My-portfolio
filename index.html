@@ -463,7 +463,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#resume">Resume</a></li>
+        <li><a href="#" id="resumeNavBtn">Resume</a></li>
             <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
@@ -581,9 +581,9 @@
 
 
 
-<div class="divider"></div>
+<div class="divider" id="resume-divider" style="display:none;"></div>
 
-<div class="section-wrap" id="resume">
+<div class="section-wrap" id="resume" style="display:none;">
     <p class="section-label">// Resume</p>
     <h2>My Resume</h2>
     <div class="resume-wrapper">
@@ -609,8 +609,7 @@
     <div class="social-links">
         <a href="https://github.com/" target="_blank">GitHub</a>
         <a href="#" target="_blank">LinkedIn</a>
-        <a href="#" target="_blank">Twitter</a>
-        <a href="#" target="_blank">Dribbble</a>
+        <a href="https://www.instagram.com/xhmd._.aiman/" target="_blank">Instagram</a>
     </div>
     <p>&copy; 2026 HYMAAN ALI. Crafted with passion.</p>
 </footer>
@@ -650,6 +649,20 @@
         if (Math.random() > 0.75) p.style.background = 'var(--magenta)';
         pc.appendChild(p);
     }
+
+    // Resume nav toggle
+    let resumeLoaded = false;
+    document.getElementById('resumeNavBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        const section = document.getElementById('resume');
+        const divider = document.getElementById('resume-divider');
+        const isHidden = section.style.display === 'none';
+        section.style.display = isHidden ? 'block' : 'none';
+        divider.style.display = isHidden ? 'block' : 'none';
+        if (isHidden) {
+            setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+        }
+    });
 
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', function(e) {
